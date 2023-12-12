@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/video-streaming-platform-/static/css/main.8244a4ab.css",
+    "main.js": "/video-streaming-platform-/static/js/main.71f50d5f.js",
+    "static/js/557.2d7e48a2.chunk.js": "/video-streaming-platform-/static/js/557.2d7e48a2.chunk.js",
+    "static/js/301.13595ce9.chunk.js": "/video-streaming-platform-/static/js/301.13595ce9.chunk.js",
+    "static/js/787.df02e639.chunk.js": "/video-streaming-platform-/static/js/787.df02e639.chunk.js",
+    "static/media/shorts.png": "/video-streaming-platform-/static/media/shorts.4f849058d441e59f388f.png",
+    "index.html": "/video-streaming-platform-/index.html",
+    "main.8244a4ab.css.map": "/video-streaming-platform-/static/css/main.8244a4ab.css.map",
+    "main.71f50d5f.js.map": "/video-streaming-platform-/static/js/main.71f50d5f.js.map",
+    "557.2d7e48a2.chunk.js.map": "/video-streaming-platform-/static/js/557.2d7e48a2.chunk.js.map",
+    "301.13595ce9.chunk.js.map": "/video-streaming-platform-/static/js/301.13595ce9.chunk.js.map",
+    "787.df02e639.chunk.js.map": "/video-streaming-platform-/static/js/787.df02e639.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8244a4ab.css",
+    "static/js/main.71f50d5f.js"
+  ]
+}
