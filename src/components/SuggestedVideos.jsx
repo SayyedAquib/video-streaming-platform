@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import SuggestedVideoCard from "./SuggestedVideoCard";
+import { X_RapidAPI_Key } from "../utils/constants";
 
 function SuggestedVideos() {
   const [searchParams] = useSearchParams();
@@ -16,7 +17,7 @@ function SuggestedVideos() {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "0da373d051msh8d50bc31e9973dfp13a316jsn6e0ef3194b93",
+        "X-RapidAPI-Key": X_RapidAPI_Key,
         "X-RapidAPI-Host": "yt-api.p.rapidapi.com",
       },
     };
