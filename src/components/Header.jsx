@@ -3,24 +3,24 @@ import { toggleMenu } from "../utils/appSlice";
 import { useEffect, useState } from "react";
 import { cacheResults } from "../utils/searchSlice";
 import { Link } from "react-router-dom";
-import axios from 'axios';
-import jsonpAdapter from 'axios-jsonp';
+import axios from "axios";
+import jsonpAdapter from "axios-jsonp";
 
 function Header() {
-  const [searchQuery, setSearchQuery] = useState("")
+  const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  const cachedResults = useSelector(store => store.search)
+  const cachedResults = useSelector((store) => store.search);
   const dispatch = useDispatch();
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
-  }
+  };
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      if (searchQuery.trim() !== '') {
+      if (searchQuery.trim() !== "") {
         // Check if the results are already in the cache
         if (cachedResults[searchQuery]) {
           setSuggestions(cachedResults[searchQuery]);
@@ -29,12 +29,14 @@ function Header() {
             .then((result) => {
               setSuggestions(result);
               // Update the cache with the new results
-              dispatch(cacheResults({
-                [searchQuery]: result,
-              }));
+              dispatch(
+                cacheResults({
+                  [searchQuery]: result,
+                })
+              );
             })
             .catch((error) => {
-              console.error('Error fetching suggestions:', error);
+              console.error("Error fetching suggestions:", error);
             });
         }
       } else {
@@ -43,7 +45,6 @@ function Header() {
     }, 300);
 
     return () => clearTimeout(delayDebounceFn);
-
   }, [searchQuery]);
 
   const handleInputChange = (event) => {
@@ -51,25 +52,25 @@ function Header() {
   };
 
   const fetchSuggestions = async (term) => {
-    const GOOGLE_AC_URL = 'https://clients1.google.com/complete/search';
+    const GOOGLE_AC_URL = "https://clients1.google.com/complete/search";
     try {
       const res = await axios({
         url: GOOGLE_AC_URL,
         adapter: jsonpAdapter,
         params: {
-          client: 'youtube',
-          hl: 'en',
-          ds: 'yt',
+          client: "youtube",
+          hl: "en",
+          ds: "yt",
           q: term,
         },
       });
-      console.log('jsonp results >> ', res);
+      console.log("jsonp results >> ", res);
       if (res.status !== 200) {
-        throw new Error('Suggest API not 200!');
+        throw new Error("Suggest API not 200!");
       }
-      return res.data[1].map((item) => item[0]);
+      return res.data[1]?.map((item) => item[0]);
     } catch (error) {
-      console.error('Error fetching suggestions:', error);
+      console.error("Error fetching suggestions:", error);
       throw error;
     }
   };
@@ -78,12 +79,12 @@ function Header() {
     <>
       <div className="flex justify-between items-center bg-white p-2 fixed w-full">
         <div className="flex col-span-1 items-center">
-          <Link
-            className="text-4xl pb-2 ml-2 cursor-pointer"
+          <div
+            className="text-4xl pb-2 pl-6 cursor-pointer"
             onClick={() => toggleMenuHandler()}
           >
             &#8801;
-          </Link>
+          </div>
           <Link to="/">
             <img
               className="h-8 mx-2"
@@ -104,7 +105,7 @@ function Header() {
             />
             <Link
               onClick={() => setShowSuggestions(false)}
-              to={"results?search_query=" + searchQuery}
+              to={searchQuery && "results?search_query=" + searchQuery}
             >
               <button className="border border-gray-400 px-5 py-2 rounded-r-full bg-gray-100">
                 🔍
@@ -115,7 +116,7 @@ function Header() {
           {showSuggestions && (
             <div className="absolute top-full bg-white px-2 w-full md:w-[33rem] shadow-lg rounded-lg border border-gray-100 mt-1">
               <ul>
-                {suggestions.map((suggestion, index) => (
+                {suggestions?.map((suggestion, index) => (
                   <Link
                     onClick={() => setShowSuggestions(false)}
                     key={index}
@@ -134,7 +135,7 @@ function Header() {
           )}
         </div>
 
-        <div className="col-span-1">
+        <div className="col-span-1 pr-3">
           <img
             className="h-8"
             alt="user"
@@ -144,6 +145,6 @@ function Header() {
       </div>
     </>
   );
-};
+}
 
 export default Header;

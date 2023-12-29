@@ -29,6 +29,7 @@ const VideoContainer = () => {
       }
 
       const json = await response.json();
+      console.log(json);
       setVideos(json.items);
     } catch (error) {
       console.error("Error fetching videos:", error);
@@ -39,8 +40,8 @@ const VideoContainer = () => {
   if (!videos.length) return <ShimmerUI />;
 
   return (
-    <div className="flex flex-wrap mt-[10px]">
-      {videos.map((video, i) => (
+    <div className="flex flex-wrap justify-center mt-[10px]">
+      {videos?.map((video, i) => (
         <Link
           key={i}
           to={"/watch?v=" + (text === "All" ? video.id : video.id.videoId)}

@@ -5,31 +5,35 @@ import { closeMenu } from "../utils/appSlice";
 import { ID_KEY, YOUTUBE_WATCH_VIDEO_API } from "../utils/constants";
 import CommentsContainer from "./CommentsContainer";
 import SuggestedVideos from "./SuggestedVideos";
+import LiveChat from "./LiveChat";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
-  const [detail, setDetail] = useState('')
+  const [detail, setDetail] = useState("");
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(closeMenu());
     getWatchVideoData();
   }, []);
 
   const getWatchVideoData = async () => {
-    const data = await fetch(YOUTUBE_WATCH_VIDEO_API + searchParams.get("v") + ID_KEY)
+    const data = await fetch(
+      YOUTUBE_WATCH_VIDEO_API + searchParams.get("v") + ID_KEY
+    );
     const json = await data.json();
     console.log(json.items);
-    setDetail(json.items)
-  }
+    setDetail(json.items);
+  };
 
   return (
-    <div className="flex ml-16 w-full mt-16">
+    <div className="flex justify-center w-full mt-16">
       <div>
         <div className="m-5 max-w-[950px] mx-auto">
           <div className="rounded-lg overflow-hidden">
             <iframe
-              className="w-full h-64 md:h-96"
+              className="aspect-video w-full"
               src={`https://www.youtube.com/embed/${searchParams.get("v")}`}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -97,10 +101,12 @@ const WatchPage = () => {
             </div>
           </div>
         </div>
-
         <CommentsContainer videoId={searchParams.get("v")} />
       </div>
-      <SuggestedVideos />
+      <div>
+        <LiveChat />
+        <SuggestedVideos />
+      </div>
     </div>
   );
 };

@@ -33,8 +33,8 @@ function SuggestedVideos() {
   };
 
   return (
-    <div>
-      {videos.map((video) => (
+    <div >
+      {videos?.map((video) => (
         <SuggestedVideoCard key={video.videoId} info={video} />
       ))}
     </div>

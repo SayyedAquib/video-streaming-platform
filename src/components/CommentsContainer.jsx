@@ -12,13 +12,14 @@ function CommentsContainer({ videoId }) {
   const getCommentsData = async () => {
     const data = await fetch(YOUTUBE_COMMENTS_API + videoId)
     const json = await data.json();
+    console.log(json);
     setComments(json.items)
   }
 
   return (
     <div>
-      <h1 className='font-bold text-xl ml-5'>{comments.length} Comments </h1>
-      {comments.map((comment) => <Comment key={comment.id} data={comment} />)}
+      <h1 className='font-bold text-xl ml-5'>{comments?.length} Comments </h1>
+      {comments?.map((comment) => <Comment key={comment.id} data={comment} />)}
     </div>
   )
 }

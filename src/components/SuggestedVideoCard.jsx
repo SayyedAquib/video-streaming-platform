@@ -6,7 +6,7 @@ function SuggestedVideoCard({ info }) {
     <>
       <Link 
         to={"/watch?v=" + info?.videoId}>
-        <div className='my-2 w-full shadow-lg rounded-lg p-1 flex'>
+        <div className='my-2 w-[26rem] shadow-lg rounded-lg p-1 flex'>
           <img
             className='rounded-lg object-contain'
             alt='thumbnail'

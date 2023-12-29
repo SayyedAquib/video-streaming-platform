@@ -1,5 +1,5 @@
-export const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
-export const X_RapidAPI_Key = process.env.X_RapidAPI_Key;
+const GOOGLE_API_KEY = "AIzaSyDaajN0jChgIgEHwUkVTbzs3x40R4gMm2A";
+export const X_RapidAPI_Key = "0da373d051msh8d50bc31e9973dfp13a316jsn6e0ef3194b93";
 
 export const YOUTUBE_VIDEOS_API =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=" + GOOGLE_API_KEY;

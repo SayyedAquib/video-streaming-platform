@@ -23,7 +23,7 @@ function ResultsPage() {
 
   return (
     <div className='mt-20 flex flex-col mx-auto w-[1098px] h-[201px]'>
-      {searchVideos.map((searchVideo) => (
+      {searchVideos?.map((searchVideo) => (
         <Link
           key={searchVideo.id.videoId}
           to={"/watch?v=" + searchVideo.id.videoId}>

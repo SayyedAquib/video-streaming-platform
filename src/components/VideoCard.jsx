@@ -8,7 +8,7 @@ function VideoCard({ info }) {
     return new Date(dateString).toLocaleDateString(undefined, options);
   }
 
-  if (info?.id?.kind === "youtube#channel") return;
+  if (info?.id?.kind === "youtube#channel" || info?.id?.kind === "youtube#playlist") return;
 
   return (
     <>
